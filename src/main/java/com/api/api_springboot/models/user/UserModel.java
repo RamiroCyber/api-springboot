@@ -25,6 +25,8 @@ public class UserModel implements Serializable, UserDetails {
 
     private String email;
 
+    private String userName;
+
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -47,6 +49,18 @@ public class UserModel implements Serializable, UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
 
@@ -85,13 +99,9 @@ public class UserModel implements Serializable, UserDetails {
         else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     @Override
     public String getUsername() {
-        return null;
+        return this.userName;
     }
 
     @Override
