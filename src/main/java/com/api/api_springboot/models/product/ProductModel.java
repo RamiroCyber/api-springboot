@@ -1,4 +1,4 @@
-package com.api.api_springboot.models;
+package com.api.api_springboot.models.product;
 import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
 import java.io.Serial;
@@ -10,15 +10,21 @@ import java.util.UUID;
 @Entity
 @Table(name = "TB_PRODUCTS")
 public class ProductModel extends RepresentationModel<ProductModel> implements Serializable {
-        @Serial
-        private static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private UUID id;
-        private String name;
-        private BigDecimal value;
-        private int amount;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    private String name;
+
+    private BigDecimal value;
+
+    private int amount;
+
+    public ProductModel() {
+    }
 
     public UUID getId() {
         return id;

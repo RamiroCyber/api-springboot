@@ -1,6 +1,6 @@
 package com.api.api_springboot.controllers;
 import com.api.api_springboot.dtos.ProductRecordDto;
-import com.api.api_springboot.models.ProductModel;
+import com.api.api_springboot.models.product.ProductModel;
 import com.api.api_springboot.repositories.ProductRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
