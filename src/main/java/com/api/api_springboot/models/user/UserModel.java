@@ -39,6 +39,13 @@ public class UserModel implements Serializable, UserDetails {
     public UserModel() {
     }
 
+    public UserModel(String email, String userName, String password, UserRole role) {
+        this.email = email;
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+    }
+
     public UUID getId() {
         return id;
     }
