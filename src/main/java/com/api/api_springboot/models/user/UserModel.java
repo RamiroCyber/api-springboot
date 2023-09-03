@@ -29,7 +29,6 @@ public class UserModel implements Serializable, UserDetails {
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
     private UserRole role;
 
     @Temporal(TemporalType.TIMESTAMP)
