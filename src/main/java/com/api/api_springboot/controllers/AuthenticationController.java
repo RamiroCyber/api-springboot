@@ -1,6 +1,8 @@
 package com.api.api_springboot.controllers;
 
+import com.api.api_springboot.config.security.JwtService;
 import com.api.api_springboot.dtos.AuthenticationRecordDto;
+import com.api.api_springboot.dtos.LoginResponseDto;
 import com.api.api_springboot.dtos.RegisterRecordDto;
 import com.api.api_springboot.models.user.UserModel;
 import com.api.api_springboot.repositories.UserRepository;
@@ -27,11 +29,16 @@ public class AuthenticationController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    JwtService jwtService;
+
     @PostMapping("/signin")
     public ResponseEntity<Object> login(@RequestBody @Valid AuthenticationRecordDto authentication) {
         var userPassword = new UsernamePasswordAuthenticationToken(authentication.email(), authentication.password());
         var auth = this.authenticationManager.authenticate(userPassword);
-        return ResponseEntity.status(HttpStatus.OK).build();
+
+        var token = jwtService.generateToken((UserModel) auth.getPrincipal());
+        return ResponseEntity.status(HttpStatus.OK).body( new LoginResponseDto(token));
     }
 
     @PostMapping("/register")
